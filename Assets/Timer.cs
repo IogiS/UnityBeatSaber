@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class Timer : MonoBehaviour
 {
+    [SerializeField]
+    private float timer;
     public bool isFree = true;
+    public GameObject[] cubes;
+    public Transform points;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,22 +18,38 @@ public class Timer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (spawner.timer > 1)
-        {
-            isFree = false;
-            spawner.timer = 0;
-        }
+
+        timer += Time.deltaTime;
+
     }
 
-    public void Spawn(int i)
+    
+    void IsFree()
     {
 
-            GameObject cube = Instantiate(spawner.cubes[Random.Range(0, 2)], spawner.points[i]);
+        if (timer > 1)
+        {
+            isFree = false;
+        }
+        else
+            isFree = true;
+
+    }
+    public void Spawn()
+    {
+        if (isFree)
+        {
+
+
+
+
+            GameObject cube = Instantiate(cubes[Random.Range(0, 2)], points);
 
             cube.transform.localPosition = Vector3.zero;
 
             cube.transform.Rotate(transform.forward, 90 * Random.Range(0, 4));
+            timer = 0;
 
-        
+        }
     }
 }

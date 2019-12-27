@@ -2,37 +2,34 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class spawner : MonoBehaviour
+public class Spawner : MonoBehaviour
 {
-    public static GameObject[] cubes;
-    public static Transform[] points;
-    public float beats = (60 / 105) * 2;
+
+    public float[] samples = AudioPeer.samples;
     [SerializeField]
-    public float[] samples;
-    public static float timer; 
+    private float timer;
     // Start is called before the first frame update
+    [SerializeField]
+    public Transform[] transforms;
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        timer = Time.time;
+        samples = AudioPeer.samples;
+        timer += Time.deltaTime;
 
         if (AudioPeer.beat)
         {
-            for(int i = 0; i < 3; i++)
-            {
-                if (points[i].GetComponent<Timer>().isFree)
-                {
-                    points[i].GetComponent<Timer>().Spawn(i);
-                }
 
 
-            }
         }
+        AudioPeer.beat = false;
     }
-    
+
+
 }
+

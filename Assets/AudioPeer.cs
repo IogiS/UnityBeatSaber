@@ -11,7 +11,6 @@ public class AudioPeer : MonoBehaviour
     float previousAverageSample;
     static public bool beat = false;
     AudioSource audioSource;
-    public float timer;
     public static float[] samples = new float[64];
     // Start is called before the first frame update
     void Start()
@@ -43,8 +42,6 @@ public class AudioPeer : MonoBehaviour
             if (previousAverageSample - averageSample > 0.35)
             {
                 beat = true;
-                framePerSec = 0;
-                timer = 0;
             }
         
        
