@@ -24,15 +24,15 @@ public class Timer : MonoBehaviour
     }
 
     
-    void IsFree()
+    public void IsFree()
     {
 
         if (timer > 1)
         {
-            isFree = false;
+            isFree = true;
         }
         else
-            isFree = true;
+            isFree = false;
 
     }
     public void Spawn()

@@ -19,6 +19,7 @@ public class SpawnerNew : MonoBehaviour
         {
             for (int i = 0; i < transforms.Length; i++)
             {
+                transforms[i].GetComponent<Timer>().IsFree();
                 if (transforms[i].GetComponent<Timer>().isFree)
                 {
                     transforms[i].GetComponent<Timer>().Spawn();
