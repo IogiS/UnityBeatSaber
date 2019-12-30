@@ -39,7 +39,7 @@ public class AudioPeer : MonoBehaviour
             averageSample += samples[i]; 
         }
 
-            if (previousAverageSample - averageSample > 0.35)
+            if (averageSample - previousAverageSample > 0.5)
             {
                 beat = true;
             }
