@@ -14,13 +14,16 @@ public class cube : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Destroy(gameObject, 10f);
         transform.position += Time.deltaTime * transform.forward * 2;
     }
 
-    //void OnTriggerEnter(Collider collision)
-    //{
-
-    //    Destroy(collision.gameObject);
-    //    print(collision.gameObject.name);
-    //}
+    void OnCollisionEnter(Collision col)
+    {
+        if (col.gameObject.name == "bullet")
+        {
+            Destroy(col.gameObject); //удаляем врага с !КОТОРЫМ! столкнулись.
+        }
+        Destroy(gameObject); //удаляем нашу пулю если она в что либо врезалась.
+    }
 }

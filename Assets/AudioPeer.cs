@@ -34,12 +34,12 @@ public class AudioPeer : MonoBehaviour
     void  CheckBeat()
     {
         float averageSample = 0;
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 7; i++)
         {
             averageSample += samples[i]; 
         }
 
-            if (averageSample - previousAverageSample > 0.5)
+            if (averageSample - previousAverageSample > 0.55)
             {
                 beat = true;
             }
